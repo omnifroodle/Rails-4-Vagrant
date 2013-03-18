@@ -63,7 +63,6 @@ class postgresql::config::beforeservice(
   # Lets setup the base rules
   postgresql::pg_hba_rule { 'local access as postgres user':
     type        => 'local',
-    user        => 'postgres',
     auth_method => 'ident',
     auth_option => $postgresql::params::version ? {
       '8.1'   => 'sameuser',
