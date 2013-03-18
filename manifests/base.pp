@@ -87,14 +87,14 @@ package { 'bundler':
 
 $command = "bundle install"
 
-exec { "bundle install /vagrant":
+exec { "bundle install /vagrant/app":
   command     => $command,
   cwd         => '/vagrant',
   path        => "/bin:/usr/bin:/usr/local/bin",
   unless      => 'bundle check',
   require     => [Package['bundler'], Package['postgresql-server-dev-all']],
   logoutput   => on_failure,
-  environment => "HOME='/vagrant'",
+  environment => "HOME='/vagrant/app'",
 }
 
 ########################################
@@ -102,9 +102,9 @@ exec { "bundle install /vagrant":
 
 exec { "rake db:migrate":
   command => "bundle exec rake db:migrate",
-  cwd     => '/vagrant',
+  cwd     => '/vagrant/app',
   path    => "/bin:/usr/bin:/usr/local/bin",
-  require => [Exec["bundle install /vagrant"], Postgresql::Db['solrpanl_development']],
+  require => [Exec["bundle install /vagrant/app"], Postgresql::Db['solrpanl_development']],
 }
 
 ########################################
@@ -115,7 +115,7 @@ exec { "rake db:migrate":
 
 exec { "rails server":
   command => "rails s &",
-  cwd     => '/vagrant',
+  cwd     => '/vagrant/app',
   path    => "/vagrant/script:/bin:/usr/bin:/usr/local/bin",
   require => [Exec["rake db:migrate"]],
 }
