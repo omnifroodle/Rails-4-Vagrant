@@ -56,7 +56,9 @@ inside the vagrant
 cd /vagrant
 rails new MY_APP
 mv MY_APP app
-``
+```
 
+
+[http://localhost:8980] will forward to port 3000 on the vagrant box.
 
 

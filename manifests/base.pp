@@ -56,7 +56,7 @@ class { 'postgresql::server':
     'ip_mask_allow_all_users'    => '0.0.0.0/0',
     'listen_addresses'           => '*',
     'ipv4acls'                   => ['hostssl all johndoe 192.168.0.0/24 cert'],
-    'postgres_password'          => 'password',
+    'postgres_password'          => $pg_password,
   },
 }
 
