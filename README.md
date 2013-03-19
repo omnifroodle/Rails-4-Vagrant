@@ -6,6 +6,7 @@ This Vagrant includes:
 * Ubuntu 12.04
 * Postgres 9.1
 * Rails 4.0.0 pre
+* Ruby 1.9.3p392 (soon to be upgraded to Ruby 2.0.0p0)
 
 
 Instructions
