@@ -76,6 +76,15 @@ class { ruby:
 }
 
 ########################################
+# Rails
+
+package { 'rails':
+  provider => 'gem',
+  require  => Class['ruby'],
+  ensure   => '4.0.0.beta1',
+}
+
+########################################
 # Ruby/Bundler
 # Make sure bundled gems are up to date
 
